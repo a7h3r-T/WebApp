@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="jsgyak.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="pascal">
+
+    </div>
+    <script>
+
+        window.onload = () => {
+            console.log("betöltődött")
+        }
+        var faktor = n => {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * faktor(n - 1)
+            }
+        }
+        var pascal = document.getElementById("pascal");
+
+        for (var s = 0; s < 10; s++) {
+            var újSor = document.createElement("div")
+            újSor.classList.add("sor");
+            pascal.appendChild(újSor);
+
+            for (var o = 0; o <= s; o++) {
+                var újElem = document.createElement("div");
+                újElem.innerHTML = faktor(s)/(faktor(o)*faktor(s-o));
+                újElem.classList.add("elem");
+                újSor.appendChild(újElem);
+            }
+        }
+
+    </script>
+</body>
+</html>
